@@ -15,12 +15,14 @@ function dropTable($link)
 {
     $dropTableSql = 'DROP TABLE IF EXISTS trainings';
     mysqli_query($link, $dropTableSql);
+    echo 'データベースを削除しました' . PHP_EOL;
 }
 
 function createTable($link)
 {
     $createTableSql = <<<EOT
     CREATE TABLE trainings (
+        date DATE,
         id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
         trainingEvent VARCHAR(20),
         firstWeight INTEGER,
@@ -28,8 +30,7 @@ function createTable($link)
         secondWeight INTEGER,
         secondRep INTEGER,
         thirdWeight INTEGER,
-        thirdRep  INTEGER,
-        created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+        thirdRep  INTEGER
       ) DEFAULT CHARACTER SET=utf8mb4;
     EOT;
     $result = mysqli_query($link, $createTableSql);
