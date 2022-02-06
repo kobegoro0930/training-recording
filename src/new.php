@@ -10,7 +10,7 @@
 <body>
     <div class="header"><h1>Training Recording</h1></div>
     <h2>レコードの登録</h2>
-    <form action="" method="post">
+    <form action="/create.php" method="post">
         <!-- 日付 -->
         <div>
             <label for="date">日付</label>
@@ -47,7 +47,7 @@
         </div>
         <!-- 登録ボタン -->
         <div>
-            <input type="submit">
+            <button type="submit">送信</button>
         </div>
     </form>
 </body>
