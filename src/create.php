@@ -6,32 +6,40 @@ function validate($training)
 {
     $errors = [];
 
+    // 日付のチェック
     $dates = explode('-', $training['date']);
     if (!strlen($training['date'])) {
         $errors['date'] = '日付を入力してください';
-    } elseif (!checkdate($date[1], $date[2], $date[0])) {
+    } elseif (!checkdate($dates[1], $dates[2], $dates[0])) {
         $errors['date'] = '日付を正しい形式で入力してください';
     }
+    // 種目のチェック
     if (!strlen($training['trainingEvent'])) {
         $errors['trainingEvent'] = '種目を入力してください';
     } elseif (strlen($training['trainingEvent']) > 100) {
         $errors['trainingEvent'] = '種目を100文字以内で入力してください';
     }
+    // 1setの重量のチェック
     if ($training['firstWeight'] < 1 || $training['firstWeight'] > 200) {
         $errors['firstWeight'] = '1setの重量を1~200以内の整数で入力してください';
     }
+    // 1setの回数のチェック
     if ($training['firstRep'] < 1 || $training['firstRep'] > 200) {
         $errors['firstRep'] = '1setの回数を1~200以内の整数で入力してください';
     }
+    // 2setの重量のチェック
     if ($training['secondWeight'] < 1 || $training['secondWeight'] > 200) {
         $errors['secondWeight'] = '2setの重量を1~200以内の整数で入力してください';
     }
+    // 2setの回数のチェック
     if ($training['secondRep'] < 1 || $training['secondRep'] > 200) {
         $errors['secondRep'] = '2setの回数を1~200以内の整数で入力してください';
     }
+    // 3setの重量のチェック
     if ($training['thirdWeight'] < 1 || $training['thirdWeight'] > 200) {
         $errors['thirdWeight'] = '3setの重量を1~200以内の整数で入力してください';
     }
+    // 3setの回数のチェック
     if ($training['thirdRep'] < 1 || $training['thirdRep'] > 200) {
         $errors['thirdRep'] = '3setの回数を1~200以内の整数で入力してください';
     }
@@ -95,6 +103,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: index.php");
     } else {
         // バリデーションエラーを表示
-        var_dump($errors);
+        include 'lib/view/new.php';
     }
 }
