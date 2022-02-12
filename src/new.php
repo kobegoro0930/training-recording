@@ -1,6 +1,8 @@
 <?php
 
-$errors = [
+$errors = [];
+
+$training = [
     'date' => '',
     'trainingEvent' => '',
     'firstWeight' => '',
@@ -11,4 +13,7 @@ $errors = [
     'thirdRep' => ''
 ];
 
-include 'lib/view/new.php';
+$title = '登録画面';
+$content = __DIR__ . '/lib/view/new.php';
+
+include __DIR__ . '/lib/view/layout.php';
